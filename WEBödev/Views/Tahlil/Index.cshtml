@@ -1,0 +1,78 @@
+﻿@using WEBödev.Models
+@model List<Tahlil>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div style="width:25%; float:left">
+            <body style="background-color: lightblue;">
+                @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "Tahlil adı veya açıklaması arayınız." })
+                <br />
+                <br />
+                <div style="float:left">
+                    <input type="submit" name="btn" value="Ara" class="btn btn-info" />
+                </div>
+        </div>
+    }
+</div>
+
+<a href="/Tahlil/Ekle" class="btn btn-primary">Ekle</a>
+<br />
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Kullanıcı Tc</th>
+        <th>Test No</th>
+        <th>Test Adı</th>
+        <th>Test Tarihi</th>
+        <th>Sorumlu Doktor</th>
+        <th>Açıklama</th>
+        @if (User.IsInRole("Doktor"))
+        {
+            <th>Sil</th>
+            <th>Güncelle</th>
+        }
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (User.IsInRole("Hasta"))
+        {
+            var userTc = Session["KullanıcıTc"]?.ToString();
+            if (userTc != null && item.KullanıcıTc == userTc)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.KullanıcıTc</td>
+                    <td>@item.TestNo</td>
+                    <td>@item.TestAdı</td>
+                    <td>@item.TestTarihi</td>
+                    <td>@item.SorumluDoktor</td>
+                    <td>@item.Açıklama</td>
+                    <td>@Html.ActionLink("Sil", "Sil", new { id = item.Id, @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz?')" })</td>
+                    <td><a href="@Url.Action("Güncelle","Tahlil",new {id=item.Id})" class="btn btn-warning">Güncelle</a></td>
+                </tr>
+            }
+        }
+        else if (User.IsInRole("Doktor"))
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.KullanıcıTc</td>
+                <td>@item.TestNo</td>
+                <td>@item.TestAdı</td>
+                <td>@item.TestTarihi</td>
+                <td>@item.SorumluDoktor</td>
+                <td>@item.Açıklama</td>
+                <td>@Html.ActionLink("Sil", "Sil", new { id = item.Id, @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz?')" })</td>
+                <td><a href="@Url.Action("Güncelle","Tahlil",new {id=item.Id})" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+    }
+</table>

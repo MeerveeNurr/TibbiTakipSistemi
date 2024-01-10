@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+            form label {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            form input {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 15px;
+            }
+
+            form button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br />
+        <h2>KAYIT OL</h2>
+
+        <div class="form-group">
+            <br />
+            <form method="post">
+                <label>Ad Soyad</label>
+                <input type="text" name="AdSoyad" class="form-control" required />
+                <br />
+
+                <label>Kullanıcı Tc</label>
+                <input type="text" name="KullanıcıTc" class="form-control" required />
+                <br />
+                <label>E-mail</label>
+                <input type="text" name="Email" class="form-control" required />
+                <br />
+
+                <label>Şifre</label>
+                <input type="password" name="Şifre" class="form-control" required />
+                <br />
+
+                <label>Şifre Tekrar</label>
+                <input type="password" name="SifreTekrar" class="form-control" required />
+                <br />
+
+                <button class="btn btn-secondary">Kayıt Ol</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model WEBödev.Models.Hastalık
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Ekle", "Hastalık", FormMethod.Post))
+{
+    <body style="background-color: khaki;">
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KullanıcıTc, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.KullanıcıTc, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HastalıkAdı, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.HastalıkAdı, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Açıklama, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Açıklama, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Belirtiler, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Belirtiler, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Bölümü, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Bölümü, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.RiskFaktörü, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.RiskFaktörü, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Teşhis, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Teşhis, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.İstenilenTestler, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.İstenilenTestler, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Verilenİlaç, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Verilenİlaç, new { @class = "form-control" })
+            </div>
+            <button class="btn btn-primary" type="submit">Ekle</button>
+            <a href="@Url.Action("Index", "Hastalık")">Hastalık Listesi</a>
+        </div>
+        </body>
+        }
+
+

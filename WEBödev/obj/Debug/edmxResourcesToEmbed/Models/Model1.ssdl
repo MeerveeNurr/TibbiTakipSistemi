@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TıbbiTakipSistemiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Hastalık">
+    <Key>
+      <PropertyRef Name="KullanıcıTc" />
+    </Key>
+    <Property Name="KullanıcıTc" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="HastalıkAdı" Type="nvarchar" MaxLength="50" />
+    <Property Name="Açıklama" Type="text" />
+    <Property Name="Belirtiler" Type="text" />
+    <Property Name="Bölümü" Type="nvarchar" MaxLength="50" />
+    <Property Name="RiskFaktörü" Type="nchar" MaxLength="20" />
+    <Property Name="Teşhis" Type="nvarchar" MaxLength="50" />
+    <Property Name="İstenilenTestler" Type="text" />
+    <Property Name="Verilenİlaç" Type="text" />
+  </EntityType>
+  <EntityType Name="İlaç">
+    <Key>
+      <PropertyRef Name="KullanıcıTc" />
+    </Key>
+    <Property Name="KullanıcıTc" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="İlaçNo" Type="int" />
+    <Property Name="İlaçAdı" Type="nvarchar" MaxLength="50" />
+    <Property Name="SonKullanmaTarihi" Type="datetime" />
+    <Property Name="Dozaj" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Kullanıcı">
+    <Key>
+      <PropertyRef Name="KullanıcıTc" />
+    </Key>
+    <Property Name="KullanıcıTc" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="Şifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="AdSoyad" Type="nvarchar" MaxLength="100" />
+    <Property Name="Cinsiyet" Type="nvarchar" MaxLength="10" />
+    <Property Name="DoğumTarihi" Type="date" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Rol" Type="nvarchar" MaxLength="10" />
+    <Property Name="DoktorTc" Type="nvarchar" MaxLength="11" />
+    <Property Name="DoktorŞifre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tahlil">
+    <Key>
+      <PropertyRef Name="KullanıcıTc" />
+    </Key>
+    <Property Name="KullanıcıTc" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="TestNo" Type="int" />
+    <Property Name="TestAdı" Type="nvarchar" MaxLength="50" />
+    <Property Name="TestTarihi" Type="datetime" />
+    <Property Name="SorumluDoktor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Açıklama" Type="text" />
+  </EntityType>
+  <Association Name="FK_Hastalık_Kullanıcı">
+    <End Role="Kullanıcı" Type="Self.Kullanıcı" Multiplicity="1" />
+    <End Role="Hastalık" Type="Self.Hastalık" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanıcı">
+        <PropertyRef Name="KullanıcıTc" />
+      </Principal>
+      <Dependent Role="Hastalık">
+        <PropertyRef Name="KullanıcıTc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_İlaç_Kullanıcı">
+    <End Role="Kullanıcı" Type="Self.Kullanıcı" Multiplicity="1" />
+    <End Role="İlaç" Type="Self.İlaç" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanıcı">
+        <PropertyRef Name="KullanıcıTc" />
+      </Principal>
+      <Dependent Role="İlaç">
+        <PropertyRef Name="KullanıcıTc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tahlil_Kullanıcı">
+    <End Role="Kullanıcı" Type="Self.Kullanıcı" Multiplicity="1" />
+    <End Role="Tahlil" Type="Self.Tahlil" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanıcı">
+        <PropertyRef Name="KullanıcıTc" />
+      </Principal>
+      <Dependent Role="Tahlil">
+        <PropertyRef Name="KullanıcıTc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TıbbiTakipSistemiModelStoreContainer">
+    <EntitySet Name="Hastalık" EntityType="Self.Hastalık" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="İlaç" EntityType="Self.İlaç" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanıcı" EntityType="Self.Kullanıcı" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tahlil" EntityType="Self.Tahlil" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Hastalık_Kullanıcı" Association="Self.FK_Hastalık_Kullanıcı">
+      <End Role="Kullanıcı" EntitySet="Kullanıcı" />
+      <End Role="Hastalık" EntitySet="Hastalık" />
+    </AssociationSet>
+    <AssociationSet Name="FK_İlaç_Kullanıcı" Association="Self.FK_İlaç_Kullanıcı">
+      <End Role="Kullanıcı" EntitySet="Kullanıcı" />
+      <End Role="İlaç" EntitySet="İlaç" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tahlil_Kullanıcı" Association="Self.FK_Tahlil_Kullanıcı">
+      <End Role="Kullanıcı" EntitySet="Kullanıcı" />
+      <End Role="Tahlil" EntitySet="Tahlil" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

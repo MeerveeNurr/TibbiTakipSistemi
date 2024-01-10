@@ -1,0 +1,37 @@
+﻿@model List<WEBödev.Models.Kullanıcı>
+
+@{
+    ViewBag.Title = "Tüm Hastalar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Tüm Hastalar</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kullanıcı Tc</th>
+                <th>Ad Soyad</th>
+                <th>Cinsiyet</th>
+                <th>Email</th>
+                <th>DoğumTarihi</th>
+                <th>Rol</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hasta in Model)
+            {
+                <tr>
+                    <td>@hasta.KullanıcıTc</td>
+                    <td>@hasta.AdSoyad</td>
+                    <td>@hasta.Cinsiyet</td>
+                    <td>@hasta.Email</td>
+                    <td>@hasta.DoğumTarihi</td>
+                    <td>@hasta.Rol</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

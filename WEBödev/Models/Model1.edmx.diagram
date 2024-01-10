@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc517932c2cc4ecdb5501d0be44032cd" Name="Diagram1">
+        <EntityTypeShape EntityType="TıbbiTakipSistemiModel.Hastalık" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TıbbiTakipSistemiModel.İlaç" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TıbbiTakipSistemiModel.Kullanıcı" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TıbbiTakipSistemiModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TıbbiTakipSistemiModel.Tahlil" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="TıbbiTakipSistemiModel.FK_Hastalık_Kullanıcı" ManuallyRouted="false" />
+        <AssociationConnector Association="TıbbiTakipSistemiModel.FK_İlaç_Kullanıcı" ManuallyRouted="false" />
+        <AssociationConnector Association="TıbbiTakipSistemiModel.FK_Kullanıcı_Tahlil" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

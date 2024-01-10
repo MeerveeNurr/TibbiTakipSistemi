@@ -1,0 +1,68 @@
+﻿@model WEBödev.Models.Hastalık
+@{
+    ViewBag.Title = "Güncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+@using (Html.BeginForm("Güncelle", "Hastalık", FormMethod.Post))
+{
+    <body style="background-color: antiquewhite;">
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <label>Id</label>
+                    <input type="text" name="Id" class="form-control" value="@Model.Id" />
+
+                </div>
+                <div class="form-group">
+                    <label>Kullanıcı Tc</label>
+                    <input type="text" name="Id" class="form-control" value="@Model.KullanıcıTc" />
+
+                </div>
+                <div class="form-group">
+                    <label>Hastalık Adı</label>
+                    <input type="text" name="HastalıkAdı" class="form-control" value="@Model.HastalıkAdı" />
+
+                </div>
+                <div class="form-group">
+                    <label>Açıklama</label>
+                    <input type="text" name="Açıklama" class="form-control" value="@Model.Açıklama" />
+
+                </div>
+                <div class="form-group">
+                    <label>Belirtiler</label>
+                    <input type="text" name="Belirtiler" class="form-control" value="@Model.Belirtiler" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Bölümü</label>
+                <input type="text" name="Bölümü" class="form-control" value="@Model.Bölümü" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Risk Faktörü</label>
+            <input type="text" name="RiskFaktörü" class="form-control" value="@Model.RiskFaktörü" />
+        </div>
+
+
+        <div class="form-group">
+            <label>Teşhis</label>
+            <input type="text" name="Teşhis" class="form-control" value="@Model.Teşhis" />
+        </div>
+
+        <div class="form-group">
+            <label>İstenilen Testler</label>
+            <input type="text" name="İstenilenTestler" class="form-control" value="@Model.İstenilenTestler" />
+        </div>
+
+
+        <div class="form-group">
+            <label>Verilenİlaç</label>
+            <input type="text" name="Verilenİlaç" class="form-control" value="@Model.Verilenİlaç" />
+        </div>
+        <button class="btn btn-primary" type="submit">Güncelle</button>
+        <a href="/Hastalık/Index">Hastalık Listesi</a>
+        </body>
+            }

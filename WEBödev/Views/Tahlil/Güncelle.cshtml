@@ -1,0 +1,50 @@
+﻿@model WEBödev.Models.Tahlil
+@{
+    ViewBag.Title = "Güncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+@using (Html.BeginForm("Güncelle", "Tahlil", FormMethod.Post))
+{
+    <body style="background-color: antiquewhite;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <form class="form-group" method="post">
+                        <div style="margin-bottom:15px">
+                            @Html.LabelFor(x => x.Id)
+                            @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
+                        </div>
+                        <div style="margin-bottom:15px">
+                            @Html.LabelFor(x => x.KullanıcıTc)
+                            @Html.TextBoxFor(x => x.KullanıcıTc, new { @class = "form-control" })
+                        </div>
+                        <div style="margin-bottom:15px">
+                            @Html.LabelFor(x => x.TestNo)
+                            @Html.TextBoxFor(x => x.TestNo, new { @class = "form-control" })
+                        </div>
+                        <div style="margin-bottom:15px">
+                            @Html.LabelFor(x => x.TestAdı)
+                            @Html.TextBoxFor(x => x.TestAdı, new { @class = "form-control" })
+                        </div>
+                        <div style="margin-bottom:15px">
+                            @Html.LabelFor(x => x.TestTarihi)
+                            @Html.TextBoxFor(x => x.TestTarihi, new { @class = "form-control" })
+                        </div>
+                        <div style="margin-bottom:15px">
+                            @Html.LabelFor(x => x.SorumluDoktor)
+                            @Html.TextBoxFor(x => x.SorumluDoktor, new { @class = "form-control" })
+                        </div>
+                        <div style="margin-bottom:15px">
+                            @Html.LabelFor(x => x.Açıklama)
+                            @Html.TextBoxFor(x => x.Açıklama, new { @class = "form-control" })
+                        </div>
+                        <<button class="btn btn-success">Güncelle</button>
+                        <a href="/Tahlil/Index">Tahlil Listesi</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </body>
+        }

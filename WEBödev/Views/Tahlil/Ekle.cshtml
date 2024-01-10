@@ -1,0 +1,44 @@
+﻿@model WEBödev.Models.Tahlil
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Ekle", "Tahlil", FormMethod.Post, new { @class = "form-control" }))
+{
+    <body style="background-color: khaki;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div>
+                        <label>Id</label>
+                        @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        <label>KullanıcıTc</label>
+                        @Html.TextBoxFor(x => x.KullanıcıTc, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        <label>TestNo</label>
+                        @Html.TextBoxFor(x => x.TestNo, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        <label>TestTarihi</label>
+                        @Html.TextBoxFor(x => x.TestTarihi, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        <label>SorumluDoktor</label>
+                        @Html.TextBoxFor(x => x.SorumluDoktor, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        <label>Açıklama</label>
+                        @Html.TextBoxFor(x => x.Açıklama, new { @class = "form-control" })
+                    </div>
+
+                    <br />
+                    <button type="submit" class="btn btn-default">Ekle</button>
+                    <a href="/Tahlil/Index">Tahlil Listesi</a>
+                </div>
+            </div>
+        </div>
+        </body> }

@@ -1,0 +1,78 @@
+﻿@using WEBödev.Models
+@model List<İlaç>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div style="width:25%; float:left">
+            <body style="background-color: lavenderblush;"></body>
+                @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "İlaç adı veya dozaj arayınız." })
+                <br />
+                <div style="float:left">
+                    <input type="submit" name="btn" value="Ara" class="btn btn-info" />
+                </div>
+        </div>
+       
+    }
+
+</div>
+<a href="/İlaç/Ekle" class="btn btn-primary">Ekle</a>
+<br />
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>KullanıcıTc</th>
+        <th>İlaçNo</th>
+        <th>İlaçAdı</th>
+        <th>SonKullanmaTarihi</th>
+        <th>Dozaj</th>
+        @if (User.IsInRole("Hasta"))
+        {
+            <th>Sil</th>
+            <th>Güncelle</th>
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        // Hasta rolü için filtreleme
+        if (User.IsInRole("Hasta") && item.KullanıcıTc.ToString() == Session["KullanıcıTc"].ToString())
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.KullanıcıTc</td>
+                <td>@item.İlaçNo</td>
+                <td>@item.İlaçAdı</td>
+                <td>@item.SonKullanmaTarihi</td>
+                <td>@item.Dozaj</td>
+
+                <td>@Html.ActionLink("Sil", "Sil", new { id = item.Id, @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz?')" })</td>
+                <td><a href="@Url.Action("Güncelle", "İlaç", new { id = item.Id })" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+        else if (User.IsInRole("Doktor"))
+        {
+            // Doktor rolü için filtreleme
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.KullanıcıTc</td>
+                <td>@item.İlaçNo</td>
+                <td>@item.İlaçAdı</td>
+                <td>@item.SonKullanmaTarihi</td>
+                <td>@item.Dozaj</td>
+
+                <td>@Html.ActionLink("Sil", "Sil", new { id = item.Id, @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz?')" })</td>
+                <td><a href="/İlaç/Guncelle/@item.Id" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+    }
+</table>
+
